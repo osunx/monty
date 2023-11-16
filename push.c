@@ -1,45 +1,37 @@
 #include "monty.h"
-
 /**
  * f_push - add node to the stack
- * @stackHead: pointer to the head of the stack
- * @lineNumber: line number
+ * @head: stack head
+ * @counter: line_number
  * Return: no return
- */
-void push(stack_t **stackHead, unsigned int lineNumber)
+*/
+void push(stack_t **head, unsigned int counter)
 {
-        int integerValue, index = 0, errorFlag = 0;
+	int n, j = 0, flag = 0;
 
-        if (mover.arg)
-        {
-                if (mover.arg[0] == '-')
-                        index++;
-                for (; mover.arg[index] != '\0'; index++)
-                {
-                        if (mover.arg[index] > 57 || mover.arg[index] < 48)
-                                errorFlag = 1;
-                }
-                if (errorFlag == 1)
-                {
-                        fprintf(stderr, "L%d: usage: push integer\n", lineNumber);
-                        fclose(mover.file);
-                        free(mover.content);
-                        freestack(*stackHead);
-                        exit(EXIT_FAILURE);
-                }
-        }
-        else
-        {
-                fprintf(stderr, "L%d: usage: push integer\n", lineNumber);
-                fclose(mover.file);
-                free(mover.content);
-                freestack(*stackHead);
-                exit(EXIT_FAILURE);
-        }
-
-        integerValue = atoi(mover.arg);
-        if (mover.lifo == 0)
-                addnode(stackHead, integerValue);
-        else
-                addqueue(stackHead, integerValue);
+	if (mover.arg)
+	{
+		if (mover.arg[0] == '-')
+			j++;
+		for (; mover.arg[j] != '\0'; j++)
+		{
+			if (mover.arg[j] > 57 || mover.arg[j] < 48)
+				flag = 1; }
+		if (flag == 1)
+		{ fprintf(stderr, "L%d: usage: push integer\n", counter);
+			fclose(mover.file);
+			free(mover.content);
+			freestack(*head);
+			exit(EXIT_FAILURE); }}
+	else
+	{ fprintf(stderr, "L%d: usage: push integer\n", counter);
+		fclose(mover.file);
+		free(mover.content);
+		freestack(*head);
+		exit(EXIT_FAILURE); }
+	n = atoi(mover.arg);
+	if (mover.lifo == 0)
+		addnode(head, n);
+	else
+		addqueue(head, n);
 }
