@@ -1,19 +1,6 @@
 #include "monty.h"
 
 /**
- * queue - sets the format of the data to a queue (FIFO)
- * @head: stack head
- * @counter: line_number
- * Return: no return
- */
-void queue(stack_t **head, unsigned int counter)
-{
-	(void)head;
-	(void)counter;
-	mover.lifo = 1;  /* Set lifo flag to 1 to indicate queue mode */
-}
-
-/**
  * addqueue - add node to the tail stack
  * @head: head of the stack
  * @n: new_value
