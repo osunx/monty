@@ -38,7 +38,7 @@ void push(stack_t **stackHead, unsigned int lineNumber)
         }
 
         integerValue = atoi(bus.arg);
-        if (bus.lifi == 0)
+        if (bus.lifo == 0)
                 addnode(stackHead, integerValue);
         else
                 addqueue(stackHead, integerValue);
