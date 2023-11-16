@@ -1,5 +1,6 @@
 #ifndef MONTY_H
 #define MONTY_H
+#define _POSIX_C_SOURCE 200809L
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/types.h>
@@ -7,7 +8,6 @@
 #include <fcntl.h>
 #include <string.h>
 #include <ctype.h>
-
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -60,20 +60,5 @@ void addnode(stack_t **head, int n);
 void addqueue(stack_t **head, int n);
 void push(stack_t **head, unsigned int number);
 void pall(stack_t **head, unsigned int number);
-void pint(stack_t **head, unsigned int number);
-void pop(stack_t **head, unsigned int counter);
-void swap(stack_t **head, unsigned int counter);
-void add(stack_t **head, unsigned int counter);
-void nop(stack_t **head, unsigned int counter);
-void sub(stack_t **head, unsigned int counter);
-void divstack(stack_t **head, unsigned int counter);
-void mul(stack_t **head, unsigned int counter);
-void mod(stack_t **head, unsigned int counter);
-void pchar(stack_t **head, unsigned int counter);
-void pstr(stack_t **head, unsigned int counter);
-void rotl(stack_t **head, unsigned int counter);
-void rotr(stack_t **head, __attribute__((unused)) unsigned int counter);
-void queue(stack_t **head, unsigned int counter);
-void thestack(stack_t **head, unsigned int counter);
 
 #endif /* MONTY_H - monty.h */
