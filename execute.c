@@ -16,7 +16,10 @@ int execute(char *content, stack_t **stack, unsigned int counter, FILE *file)
 				{"swap", swap},
 				{"add", add},
         		{"nop", nop},
-        		{"sub", sub},
+				{"sub", sub},
+        		{"div", divstack},
+        		{"mul", mul},
+    		    {"mod", mod},
 				{NULL, NULL}
 				};
 	unsigned int i = 0;
