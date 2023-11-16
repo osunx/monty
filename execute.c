@@ -12,7 +12,7 @@ int execute(char *content, stack_t **stack, unsigned int counter, FILE *file)
 {
 
 	instruction_t opst[] = {
-	    {"push", pushmonty}, {"pall", pallmonty},
+	    {"push", push}, {"pall", pall},
     	{NULL, NULL}
 	};
 
@@ -26,9 +26,9 @@ int execute(char *content, stack_t **stack, unsigned int counter, FILE *file)
     if (op == NULL)  /* Handle empty lines or lines with only whitespace */
         return (0);
 
-    bus.arg = strtok(NULL, " \n\t");
+    mover.arg = strtok(NULL, " \n\t");
     
-    if (op && bus.arg == NULL)
+    if (op && mover.arg == NULL)
     {
         fprintf(stderr, "L%d: missing argument for %s\n", counter, op);
         fclose(file);

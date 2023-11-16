@@ -32,14 +32,14 @@ typedef struct stack_s
  * @lifi: flag change stack <-> queue
  * Description: carries values through the program
  */
-typedef struct bus_s
+typedef struct mover_s
 {
 	char *arg;
 	FILE *file;
 	char *content;
 	int lifo;
-}  bus_t;
-extern bus_t bus;
+}  mover_t;
+extern mover_t mover;
 /**
  * struct instruction_s - opcode and its function
  * @opcode: the opcode
@@ -58,7 +58,7 @@ int execute(char *content, stack_t **head, unsigned int counter, FILE *file);
 void freestack(stack_t *head);
 void addnode(stack_t **head, int n);
 void addqueue(stack_t **head, int n);
-void pushmonty(stack_t **head, unsigned int number);
-void pallmonty(stack_t **head, unsigned int number);
+void push(stack_t **head, unsigned int number);
+void pall(stack_t **head, unsigned int number);
 
 #endif /* MONTY_H - monty.h */

@@ -10,7 +10,7 @@ void queue(stack_t **head, unsigned int counter)
 {
 	(void)head;
 	(void)counter;
-	bus.lifo = 1;  /* Set lifo flag to 1 to indicate queue mode */
+	mover.lifo = 1;  /* Set lifo flag to 1 to indicate queue mode */
 }
 
 /**

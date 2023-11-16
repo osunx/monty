@@ -6,24 +6,24 @@
  * @lineNumber: line number
  * Return: no return
  */
-void pushmonty(stack_t **stackHead, unsigned int lineNumber)
+void push(stack_t **stackHead, unsigned int lineNumber)
 {
         int integerValue, index = 0, errorFlag = 0;
 
-        if (bus.arg)
+        if (mover.arg)
         {
-                if (bus.arg[0] == '-')
+                if (mover.arg[0] == '-')
                         index++;
-                for (; bus.arg[index] != '\0'; index++)
+                for (; mover.arg[index] != '\0'; index++)
                 {
-                        if (bus.arg[index] > 57 || bus.arg[index] < 48)
+                        if (mover.arg[index] > 57 || mover.arg[index] < 48)
                                 errorFlag = 1;
                 }
                 if (errorFlag == 1)
                 {
                         fprintf(stderr, "L%d: usage: push integer\n", lineNumber);
-                        fclose(bus.file);
-                        free(bus.content);
+                        fclose(mover.file);
+                        free(mover.content);
                         freestack(*stackHead);
                         exit(EXIT_FAILURE);
                 }
@@ -31,14 +31,14 @@ void pushmonty(stack_t **stackHead, unsigned int lineNumber)
         else
         {
                 fprintf(stderr, "L%d: usage: push integer\n", lineNumber);
-                fclose(bus.file);
-                free(bus.content);
+                fclose(mover.file);
+                free(mover.content);
                 freestack(*stackHead);
                 exit(EXIT_FAILURE);
         }
 
-        integerValue = atoi(bus.arg);
-        if (bus.lifo == 0)
+        integerValue = atoi(mover.arg);
+        if (mover.lifo == 0)
                 addnode(stackHead, integerValue);
         else
                 addqueue(stackHead, integerValue);

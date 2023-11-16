@@ -6,12 +6,15 @@
  * @counter: unused parameter
  * Return: no return
  */
-void pallmonty(stack_t **head, unsigned int counter)
+void pall(stack_t **head, unsigned int counter)
 {
 	stack_t *currentNode;
 	(void)counter;
 
 	currentNode = *head;
+	
+	if (currentNode == NULL)
+		return;
 
 	/* Print each element in the stack */
 	while (currentNode)

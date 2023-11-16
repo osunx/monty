@@ -1,6 +1,6 @@
 #include "monty.h"
 
-bus_t bus = {NULL, NULL, NULL, 0};
+mover_t mover = {NULL, NULL, NULL, 0};
 
 /**
 * main - monty code interpreter
@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
 		exit(EXIT_FAILURE);
 	}
 	file = fopen(argv[1], "r");
-	bus.file = file;
+	mover.file = file;
 	if (!file)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
@@ -33,7 +33,7 @@ int main(int argc, char *argv[])
 	{
 		data = NULL;
 		readline = getline(&data, &size, file);
-		bus.content = data;
+		mover.content = data;
 		counter++;
 		if (readline > 0)
 		{
