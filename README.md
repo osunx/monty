@@ -1,36 +1,41 @@
-# 0x19. C - Stacks, Queues - LIFO, FIFO
-**About:** In this project, we created a simple interpreter for Monty ByteCodes. The interpreter reads a bytecode file and executes the bytecode commands.
-### The Monty language
-Monty 0.98 is a scripting language that is first compiled into Monty byte codes (Just like Python). It relies on a unique stack, with specific instructions to manipulate it. 
+" Monty - Stacks, Queues - LIFO, FIFO
 
-### Monty byte code files
-Files containing Monty byte codes usually have the .m extension. Most of the industry uses this standard but it is not required by the specification of the language. There is not more than one instruction per line. There can be any number of spaces before or after the opcode and its argument: [examples](#Examples)
+" This repository contains the implementation of a simple interpreter for Monty ByteCodes files. Monty 0.98 is a scripting language that is first compiled into Monty byte codes, and this interpreter processes these byte codes.
 
-## Objectives:
-* To know what LIFO and FIFO mean
-* To know what a stack is, and when to use it
-* To know what a queue is, and when to use it
-* To know the common implementations of stacks and queues
-* To know the most common use cases of stacks and queues
-* To know the proper way to use global variables
+" ## Resources
+" - [Google](https://www.google.com)
+" - [How do I use extern to share variables between source files in C?](https://stackoverflow.com/questions/1433204/how-do-i-use-extern-to-share-variables-between-source-files-in-c)
+" - [Stacks and Queues in C](https://data-flair.training/blogs/stacks-and-queues-in-c/)
+" - [Stack operations](https://www.tutorialspoint.com/data_structures_algorithms/stack_algorithm.htm)
+" - [Queue operations](https://www.tutorialspoint.com/data_structures_algorithms/dsa_queue.htm)
 
-### Resource:
-* [Difference between Stack and Queue Data Structures](https://www.geeksforgeeks.org/difference-between-stack-and-queue-data-structures/) || 
+" ## Learning Objectives
+" After completing this project, you should be able to explain the following concepts without relying on external sources:
 
-## General Requirements
-* Allowed editors: **vi**, **vim**, **emacs**
-* All files is compiled on **Ubuntu 20.04 LTS using gcc**, using the options **-Wall -Werror -Wextra -pedantic -std=gnu89**
-* All files ends with a new line
-* There is **README.md** file at the root of the **alx-low_level_programming**
-* Maximum of one global variable is allowed
-* No more than 5 functions per file
-* The C standard library is allowed
-* The prototypes of all the functions were included in the header file called monty.h
-* All the header files are include guarded
+" ### General
+" - The meanings of LIFO and FIFO
+" - Understanding stacks, their usage, and common implementations
+" - Understanding queues, their usage, and common implementations
+" - Common use cases of stacks and queues
+" - Proper use of global variables in C
 
-## Instruction given:
-* To use the following data structures for this project, and to also include them in the header file.
-```
+" ## Requirements
+" ### General
+" - Allowed editors: vi, vim, emacs
+" - Compilation on Ubuntu 20.04 LTS using gcc with options: `-Wall -Werror -Wextra -pedantic -std=c89`
+" - Files should end with a newline
+" - A `README.md` file at the project's root
+" - Code should follow the Betty style
+" - A maximum of one global variable is allowed
+" - No more than 5 functions per file
+" - Usage of the C standard library is allowed
+" - Prototypes of all functions should be included in the header file `monty.h`
+" - Header files should be include guarded
+
+" ## Data Structures
+" Please use the following data structures for this project:
+
+```vim
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -46,8 +51,7 @@ typedef struct stack_s
         struct stack_s *prev;
         struct stack_s *next;
 } stack_t;
-```
-```
+
 /**
  * struct instruction_s - opcode and its function
  * @opcode: the opcode
@@ -61,61 +65,100 @@ typedef struct instruction_s
         char *opcode;
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
-```
+" ## Compilation & Output
+" Compile the code using the following command:
+" bash " $ gcc -Wall -Werror -Wextra -pedantic -std=c89 *.c -o monty "
 
-## List of files/Descriptions:
-| S/N   |   Files      		|      Description     |
-|:-----:|--------------------:|--------------------|
-|  1.   |                      |              |
-|  2.   |		|			|
-|  3.   |		|		|
-|  4.   |		|			|
-|  5.   |		|		|
+" Print any output on stdout and any error message on stderr.
 
-## Compilation & Output
-* These codes were compiled using: ```gcc -Wall -Werror -Wextra -pedantic -std=c89 *.c -o monty```
-* Any output must be printed on ```stdout```
-* Any error message must be printed on ```stderr```
+" ## Tests
+" Collaborate on creating a set of tests to ensure the correct functioning of the code.
 
-## Examples
-```
-julien@ubuntu:~/monty$ cat -e bytecodes/000.m
-push 0$
-push 1$
-push 2$
-  push 3$
-                   pall    $
-push 4$
-    push 5    $
-      push    6        $
-pall$
-julien@ubuntu:~/monty$
-```
-Monty byte code files can contain blank lines (empty or made of spaces only, and any additional text after the opcode or its required argument is not taken into account:
-```
-julien@ubuntu:~/monty$ cat -e bytecodes/001.m
-push 0 Push 0 onto the stack$
-push 1 Push 1 onto the stack$
-$
-push 2$
-  push 3$
-                   pall    $
-$
-$
-                           $
-push 4$
-$
-    push 5    $
-      push    6        $
-$
-pall This is the end of our program. Monty is awesome!$
-julien@ubuntu:~/monty$
-```
-* Some examples of using monty and its console output.
+" ## The Monty Language
+" Monty 0.98 is a scripting language compiled into Monty byte codes. These files usually have the .m extension and contain instructions executed line by line.
 
-|                        Example #1                      |                    Example #2                   |                      Example #3                           |
-|:-------------------------------------------------------|:------------------------------------------------|:----------------------------------------------------------|
-| ~/monty$ `cat -e bytecodes/00.m` <br> push 1$ <br> push 2$ <br> push 3$ <br> pall$ <br> ~/monty$ `./monty bytecodes/00.m` <br> 3 <br> 2 <br> 1  | ~/monty$ `cat bytecodes/07.m`  <br> push 1 <br> push 2 <br> push 3 <br> pall <br> pop <br> pall <br> pop <br> pall <br> pop <br> pall <br>  ~/monty$ `./monty bytecodes/07.m`  <br> 3 <br> 2 <br> 1 <br> 2 <br> 1 <br> 1 | ~/monty$ `cat bytecodes/09.m` <br> push 1 <br> push 2 <br> push 3 <br> pall <br> swap <br> pall <br> ~/monty$ `./monty bytecodes/09.m` <br> 3 <br> 2 <br> 1 <br> 2 <br> 3 <br> 1 |
+" ### Monty Byte Code Files
+" Files containing Monty byte codes have the .m extension. Each line contains at most one instruction. Blank lines are allowed.
 
-## Authors/Collaborators
-Dr Marcus & Abudullah
+" Example:
+" monty " push 0 " push 1 " push 2 " pall "
+
+" ### The Monty Program
+" Usage: monty file
+
+" - If no file or more than one argument is provided, print USAGE: monty file and exit with EXIT_FAILURE.
+" - If the file cannot be opened, print Error: Can't open file <file> and exit with EXIT_FAILURE.
+" - If an invalid instruction is encountered, print L<line_number>: unknown instruction <opcode> and exit with EXIT_FAILURE.
+
+" The Monty program stops execution if:
+" - All lines are executed successfully.
+" - An error is encountered.
+" - An error occurs during execution.
+
+" ## Quiz Questions
+" Answer quiz questions successfully.
+
+" ## Tasks
+" ### Task 0: push, pall
+" Implement the push and pall opcodes.
+
+" ### Task 1: pint
+" Implement the pint opcode.
+
+" ### Task 2: pop
+" Implement the pop opcode.
+
+" ### Task 3: swap
+" Implement the swap opcode.
+
+" ### Task 4: add
+" Implement the add opcode.
+
+" ### Task 5: nop
+" Implement the nop opcode.
+
+" ### Task 6: sub (Advanced)
+" Implement the sub opcode.
+
+" ### Task 7: div (Advanced)
+" Implement the div opcode.
+
+" ### Task 8: mul (Advanced)
+" Implement the mul opcode.
+
+" ### Task 9: mod (Advanced)
+" Implement the mod opcode.
+
+" ### Task 10: comments (Advanced)
+" Implement comments. Lines starting with # should be treated as comments.
+
+" ### Task 11: pchar (Advanced)
+" Implement the pchar opcode.
+
+" ### Task 12: pstr (Advanced)
+" Implement the pstr opcode.
+
+" ### Task 13: rotl (Advanced)
+" Implement the rotl opcode.
+
+" ### Task 14: rotr (Advanced)
+" Implement the rotr opcode.
+
+" ### Task 15: stack, queue (Advanced)
+" Implement the stack and queue opcodes.
+
+" ### Task 16: Brainfck (Advanced)
+" Write a Brainfck script that prints "School", followed by a new line.
+
+" ### Task 17: Add two digits (Advanced)
+" Read two digits from stdin, add them, and print the result.
+
+" ### Task 18: Multiplication (Advanced)
+" Read two digits from stdin, multiply them, and print the result.
+
+" ### Task 19: Multiplication Level Up (Advanced)
+" Multiply two digits read from stdin, print the result followed by a new line.
+
+" ## Directory Structure
+" - bf: Contains Brainf*ck scripts.
+" - bytecodes: Contains Monty byte code files.

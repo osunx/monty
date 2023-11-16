@@ -1,26 +1,33 @@
 #include "monty.h"
-/**
-  *f_rotr- rotates the stack to the bottom
-  *@head: stack head
-  *@counter: line_number
-  *Return: no return
- */
-void f_rotr(stack_t **head, __attribute__((unused)) unsigned int counter)
-{
-	stack_t *copy;
 
-	copy = *head;
+/**
+ * rotr - rotates the stack to the bottom
+ * @head: pointer to the head of the stack
+ * @counter: line_number
+ * Return: no return
+ */
+void rotr(stack_t **head, __attribute__((unused)) unsigned int counter)
+{
+	stack_t *currentNode = *head, *lastNode;
+
+	/* Check if the stack is empty or has only one */
+	/* element, in which case rotation is not needed */
 	if (*head == NULL || (*head)->next == NULL)
 	{
 		return;
 	}
-	while (copy->next)
+
+	/* Traverse to the last node of the stack */
+	while (currentNode->next)
 	{
-		copy = copy->next;
+		currentNode = currentNode->next;
 	}
-	copy->next = *head;
-	copy->prev->next = NULL;
-	copy->prev = NULL;
-	(*head)->prev = copy;
-	(*head) = copy;
+
+	/* Set the last node as the new head after rotation */
+	lastNode = currentNode;
+	lastNode->next = *head;
+	lastNode->prev->next = NULL;
+	lastNode->prev = NULL;
+	(*head)->prev = lastNode;
+	(*head) = lastNode;
 }
