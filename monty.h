@@ -69,5 +69,8 @@ void sub(stack_t **head, unsigned int counter);
 void divstack(stack_t **head, unsigned int counter);
 void mul(stack_t **head, unsigned int counter);
 void mod(stack_t **head, unsigned int counter);
+void pchar(stack_t **head, unsigned int counter);
+void pstr(stack_t **head, unsigned int counter);
+void rotl(stack_t **head, unsigned int counter);
 
 #endif /* MONTY_H - monty.h */
