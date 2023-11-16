@@ -3,21 +3,24 @@
 /**
  * mul - multiplies the top two elements of the stack.
  * @head: pointer to the head of the stack
- * @counter: line_number
+ * @counter: line number
  * Return: no return
- */
+*/
 void mul(stack_t **head, unsigned int counter)
 {
 	stack_t *currentNode;
-	int product, stackLength;
+	int stackLength = 0, result;
 
 	currentNode = *head;
 
 	/* Calculate the length of the stack */
-	for (stackLength = 0; currentNode != NULL; stackLength++)
+	while (currentNode)
+	{
 		currentNode = currentNode->next;
+		stackLength++;
+	}
 
-	/* Check if the stack has less than 2 elements */
+	/* Check if the stack has at least two elements */
 	if (stackLength < 2)
 	{
 		fprintf(stderr, "L%d: can't mul, stack too short\n", counter);
@@ -27,10 +30,11 @@ void mul(stack_t **head, unsigned int counter)
 		exit(EXIT_FAILURE);
 	}
 
-	/* Calculate the product of the top two elements */
 	currentNode = *head;
-	product = currentNode->next->n * currentNode->n;
-	currentNode->next->n = product;
+	result = currentNode->next->n * currentNode->n;
+
+	/* Update the second node's value and adjust the stack */
+	currentNode->next->n = result;
 	*head = currentNode->next;
 	free(currentNode);
 }
