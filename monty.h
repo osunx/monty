@@ -60,5 +60,6 @@ void addnode(stack_t **head, int n);
 void addqueue(stack_t **head, int n);
 void push(stack_t **head, unsigned int number);
 void pall(stack_t **head, unsigned int number);
+void pint(stack_t **head, unsigned int number);
 
 #endif /* MONTY_H - monty.h */
