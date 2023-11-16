@@ -6,7 +6,7 @@
  * @lineNumber: line number
  * Return: no return
  */
-void push(stack_t **stackHead, unsigned int lineNumber)
+void pushmonty(stack_t **stackHead, unsigned int lineNumber)
 {
         int integerValue, index = 0, errorFlag = 0;
 

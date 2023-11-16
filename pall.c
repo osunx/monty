@@ -6,7 +6,7 @@
  * @counter: unused parameter
  * Return: no return
  */
-void pall(stack_t **head, unsigned int counter)
+void pallmonty(stack_t **head, unsigned int counter)
 {
 	stack_t *currentNode;
 	(void)counter;

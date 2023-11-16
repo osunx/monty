@@ -58,7 +58,7 @@ int execute(char *content, stack_t **head, unsigned int counter, FILE *file);
 void freestack(stack_t *head);
 void addnode(stack_t **head, int n);
 void addqueue(stack_t **head, int n);
-void push(stack_t **head, unsigned int number);
-void pall(stack_t **head, unsigned int number);
+void pushmonty(stack_t **head, unsigned int number);
+void pallmonty(stack_t **head, unsigned int number);
 
 #endif /* MONTY_H - monty.h */
